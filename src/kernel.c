@@ -13,6 +13,6 @@ void wellcome_griffinOS() {
 
 void kernel_main()
 {
-	terminal_init();
+    terminal_init();
     wellcome_griffinOS();
 }

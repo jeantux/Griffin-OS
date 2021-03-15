@@ -1,6 +1,6 @@
 # GriffinOS
 
-## It is a simple operating system, x86 architecture
+#### It is a simple operating system, x86 architecture
 
 ## Configurations
 

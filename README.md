@@ -1,6 +1,6 @@
 # GriffinOS
 
-## It is a simple operating system, x86 architecture
+#### It is a simple operating system, x86 architecture
 
 ## Configurations
 
@@ -13,7 +13,7 @@ there are some packages that facilitate creation like i686-elf-gcc <br>
 sh ./build.sh
 ```
 
-```bash
 To execute with qemu emulator execute:
+```bash
 sh ./run.sh
 ```

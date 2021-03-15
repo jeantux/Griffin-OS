@@ -1,1 +1,0 @@
-qemu-system-i386 -M pc-i440fx-3.1 -kernel bin/griffinOS.bin

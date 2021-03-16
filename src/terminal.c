@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <stdint.h>
+#include "vga.h"
 
 volatile uint16_t* vga_buffer = (uint16_t*)0xB8000;
 
@@ -8,7 +9,7 @@ const int VGA_ROWS = 25;
 
 int term_column = 0;
 int term_row = 0;
-uint8_t term_color = 0x0F;
+uint8_t terminal_color = VGA_COLOR_BLACK;
 
 void terminal_init()
 {
@@ -17,7 +18,7 @@ void terminal_init()
 		for (int row = 0; row < VGA_ROWS; row ++)
 		{
 			const size_t index = (VGA_COLS * row) + col;
-			vga_buffer[index] = ((uint16_t)term_color << 8) | ' ';
+			vga_buffer[index] = ((uint16_t)terminal_color << 8) | ' ';
 		}
 	}
 }
@@ -35,7 +36,7 @@ void terminal_putc(char c)
 	default:
 		{
 			const size_t index = (VGA_COLS * term_row) + term_column;
-			vga_buffer[index] = ((uint16_t)term_color << 8) | c;
+			vga_buffer[index] = ((uint16_t)terminal_color << 8) | c;
 			term_column ++;
 			break;
 		}

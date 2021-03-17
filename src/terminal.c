@@ -4,9 +4,6 @@
 
 volatile uint16_t* vga_buffer = (uint16_t*)0xB8000;
 
-const int VGA_COLS = 80;
-const int VGA_ROWS = 25;
-
 int term_column = 0;
 int term_row = 0;
 uint8_t terminal_color = VGA_COLOR_BLACK;

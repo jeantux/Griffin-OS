@@ -22,4 +22,7 @@
         VGA_COLOR_WHITE = 0x15F
     };
 
+    const int VGA_COLS = 80;
+    const int VGA_ROWS = 25;
+
 #endif

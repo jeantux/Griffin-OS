@@ -2,20 +2,21 @@
 #include <stdint.h>
 #include "vga.h"
 
-volatile uint16_t* vga_buffer = (uint16_t*)0xB8000;
+volatile uint16_t* VGA_ADDRESS = (uint16_t*)0xB8000;
 
 int term_column = 0;
 int term_row = 0;
-uint8_t terminal_color = VGA_COLOR_BLACK;
+static uint8_t terminal_color_default;
 
 void terminal_init()
 {
+	terminal_color_default = vga_out_color(VGA_COLOR_WHITE , VGA_COLOR_BLACK);
 	for (int col = 0; col < VGA_COLS; col ++)
 	{
 		for (int row = 0; row < VGA_ROWS; row ++)
 		{
 			const size_t index = (VGA_COLS * row) + col;
-			vga_buffer[index] = ((uint16_t)terminal_color << 8) | ' ';
+			VGA_ADDRESS[index] = ((uint16_t)terminal_color_default << 8) | ' ';
 		}
 	}
 }
@@ -33,7 +34,7 @@ void terminal_putc(char c)
 	default:
 		{
 			const size_t index = (VGA_COLS * term_row) + term_column;
-			vga_buffer[index] = ((uint16_t)terminal_color << 8) | c;
+			VGA_ADDRESS[index] = ((uint16_t)terminal_color_default << 8) | c;
 			term_column ++;
 			break;
 		}

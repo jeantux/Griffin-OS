@@ -21,25 +21,16 @@ void terminal_init()
 	}
 }
 
-void terminal_putc(char c)
+void break_line(char c) 
 {
-	switch (c)
-	{
-	case '\n':
-		{
-			term_column = 0;
-			term_row ++;
-			break;
-		}
-	default:
-		{
-			const size_t index = (VGA_COLS * term_row) + term_column;
-			VGA_ADDRESS[index] = ((uint16_t)terminal_color_default << 8) | c;
-			term_column ++;
-			break;
-		}
+	if (c == '\n') {
+		term_column = 0;
+		term_row ++;
 	}
+}
 
+void set_position_screen()
+{
 	if (term_column >= VGA_COLS)
 	{
 		term_column = 0;
@@ -53,8 +44,24 @@ void terminal_putc(char c)
 	}
 }
 
-void printf(const char* str)
+void write_char_screen(char c)
+{
+	if (c != '\n') {
+		const size_t index = (VGA_COLS * term_row) + term_column;
+		VGA_ADDRESS[index] = ((uint16_t)terminal_color_default << 8) | c;
+		term_column ++;
+	}
+}
+
+void terminal_put_char(char c)
+{
+	break_line(c);
+	write_char_screen(c);
+	set_position_screen();
+}
+
+void terminal_write(const char* str)
 {
 	for (size_t i = 0; str[i] != '\0'; i ++)
-		terminal_putc(str[i]);
+		terminal_put_char(str[i]);
 }

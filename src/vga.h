@@ -1,6 +1,6 @@
 /* VGA - Video Graphics Array */
-#ifndef ARCH_I386_VGA
-#define ARCH_I386_VGA
+#ifndef __ARCH_I386_VGA
+#define __ARCH_I386_VGA
 
 #include <stdint.h>
     enum vga_color {

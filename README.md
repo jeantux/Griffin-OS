@@ -1,6 +1,6 @@
 # GriffinOS
 
-#### It is a simple operating system, x86 architecture
+It is a simple operating system, x86 architecture
 
 ## Configurations
 
@@ -17,3 +17,4 @@ To execute with qemu emulator execute:
 ```bash
 make run
 ```
+<img src="https://github.com/jeaanca/Griffin-OS/blob/main/docs/griffinOS.png"><br>

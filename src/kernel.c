@@ -1,4 +1,5 @@
-#include "terminal.c"
+#include "terminal.c" // change to initialize file
+#include <printf.h>
  
 #if defined(__linux__)
 	#error "You are not using a cross-compiler, this can cause several problems"

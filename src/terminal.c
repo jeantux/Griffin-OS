@@ -1,3 +1,6 @@
+#ifndef __TERMINAL_C
+#define __TERMINAL_C
+
 #include <stddef.h>
 #include <stdint.h>
 #include "vga.h"
@@ -56,8 +59,10 @@ void terminal_put_char(char c)
 	set_position_screen();
 }
 
-void terminal_write(const char* str)
+void terminal_put_string(const char* str)
 {
 	for (size_t i = 0; str[i] != '\0'; i ++)
 		terminal_put_char(str[i]);
 }
+
+#endif

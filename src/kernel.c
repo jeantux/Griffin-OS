@@ -1,5 +1,5 @@
-#include "terminal.c" // change to initialize file
-#include <stdio.h>
+#include "terminal.c"
+#include <stdio.c>
  
 #if defined(__linux__)
 	#error "You are not using a cross-compiler, this can cause several problems"
@@ -7,8 +7,10 @@
 	#error "This system must be compiled with a ix86-elf compiler"
 #endif
 
+const char *app_name = "Griffin-OS";
+
 void wellcome_griffinOS() {
-	printf("Welcome to GriffinOS!\n");
+	printf("Welcome to %s !\n", app_name);
 	printf("Version: 0.0.0\n");
 }
 

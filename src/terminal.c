@@ -21,21 +21,16 @@ void terminal_init()
 	}
 }
 
-void break_line(char c) 
+void break_line() 
 {
-	if (c == '\n') {
-		term_column = 0;
-		term_row ++;
-	}
+	term_column = 0;
+	term_row ++;
 }
 
 void set_position_screen()
 {
 	if (term_column >= VGA_COLS)
-	{
-		term_column = 0;
-		term_row ++;
-	}
+		break_line();
 
 	if (term_row >= VGA_ROWS)
 	{
@@ -50,12 +45,13 @@ void write_char_screen(char c)
 		const size_t index = (VGA_COLS * term_row) + term_column;
 		VGA_ADDRESS[index] = ((uint16_t)terminal_color_default << 8) | c;
 		term_column ++;
+	} else {
+		break_line();
 	}
 }
 
 void terminal_put_char(char c)
 {
-	break_line(c);
 	write_char_screen(c);
 	set_position_screen();
 }
